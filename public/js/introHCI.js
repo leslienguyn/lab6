@@ -27,4 +27,27 @@ function addProjectDetails(e) {
 	var idNumber = projectID.substr('project'.length);
 
 	console.log("User clicked on project " + idNumber);
+
+	$.get("http://URL", callBackFn);
+}
+
+function projectClick(e) {
+	e.preventDefault();
+	$(this).css("background-color", "#7fff00");
+
+	var containingProject = $(this).closest(".project");
+	var description = $(containingProject).find(".project-description");
+	if (description.length == 0) {
+	$(containingProject).append("<div class='project-description'><p>Description of the project.</p></div>");
+	} else {
+		$(".project-description").toggle();
+	}
+}
+
+$("#testjs").click(function(result) {
+	$.get("http://URL", callBackFn);
+}
+
+function callBackFn(result) {
+	console.log(result.data);
 }
